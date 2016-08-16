@@ -19,7 +19,7 @@ var HeroesComponent = (function () {
     HeroesComponent.prototype.getHeroes = function () {
         var _this = this;
         this.pushService
-            .getHeroes()
+            .doSomeGet()
             .then(function (pushResult) { return _this.pushResult = pushResult; })
             .catch(function (error) { return _this.error = error; });
     };
@@ -31,7 +31,7 @@ var HeroesComponent = (function () {
     // close(savedHero:Hero) {
     //     this.addingHero = false;
     //     if (savedHero) {
-    //         this.getHeroes();
+    //         this.doSomeGet();
     //     }
     // }
     //

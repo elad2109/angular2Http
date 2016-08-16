@@ -17,14 +17,14 @@ var PushService = (function () {
         this.http = http;
         this.pushUrl = 'www.google.com'; // URL to web api
     }
-    PushService.prototype.getHeroes = function () {
+    PushService.prototype.doSomeGet = function () {
         return this.http.get(this.pushUrl)
             .toPromise()
             .then(function (response) { return response.json().data; })
             .catch(this.handleError);
     };
-    PushService.prototype.getHero = function (id) {
-        return this.getHeroes()
+    PushService.prototype.goGetForId = function (id) {
+        return this.doSomeGet()
             .then(function (heroes) { return heroes.find(function (hero) { return hero.id === id; }); });
     };
     // save(hero: Hero): Promise<Hero>  {

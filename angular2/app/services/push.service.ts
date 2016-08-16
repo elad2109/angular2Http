@@ -11,14 +11,16 @@ export class PushService {
 
     constructor(private http: Http) { }
 
-    getHeroes() {
+    doSomeGet() {
+        console.info("sending get request");
+
         return this.http.get(this.pushUrl)
             .toPromise()
             .then(response => response.json().data as PushResult[])
             .catch(this.handleError);
     }
-    getHero(id: number) {
-        return this.getHeroes()
+    goGetForId(id: number) {
+        return this.doSomeGet()
             .then(heroes => heroes.find(hero => hero.id === id));
     }
     // save(hero: Hero): Promise<Hero>  {

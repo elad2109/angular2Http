@@ -19,7 +19,7 @@ export class HeroesComponent implements OnInit {
 
     getHeroes() {
         this.pushService
-            .getHeroes()
+            .doSomeGet()
             .then(pushResult => this.pushResult = pushResult)
             .catch(error => this.error = error);
     }
@@ -32,7 +32,7 @@ export class HeroesComponent implements OnInit {
     // close(savedHero:Hero) {
     //     this.addingHero = false;
     //     if (savedHero) {
-    //         this.getHeroes();
+    //         this.doSomeGet();
     //     }
     // }
     //
@@ -52,6 +52,8 @@ export class HeroesComponent implements OnInit {
     ngOnInit() {
         this.getHeroes();
     }
+
+
 
     // onSelect(hero:Hero) {
     //     this.selectedHero = hero;

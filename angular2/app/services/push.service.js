@@ -12,60 +12,20 @@ var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 require('rxjs/add/operator/toPromise');
 var PushService = (function () {
-    // private pushUrl = 'app/heroes';  // URL to web api
     function PushService(http) {
         this.http = http;
-        this.pushUrl = 'www.google.com'; // URL to web api
+        //private pushUrl = 'http://www.ynet.com';  // URL to web api
+        this.pushUrl = '/app/eladb.json'; // URL to web api
     }
     PushService.prototype.doSomeGet = function () {
-        return this.http.get(this.pushUrl)
-            .toPromise()
-            .then(function (response) { return response.json().data; })
+        console.info("sending get request");
+        this.http.get(this.pushUrl)
+            .forEach(function (response) { console.info(response.json()); })
             .catch(this.handleError);
     };
-    PushService.prototype.goGetForId = function (id) {
-        return this.doSomeGet()
-            .then(function (heroes) { return heroes.find(function (hero) { return hero.id === id; }); });
-    };
-    // save(hero: Hero): Promise<Hero>  {
-    //     if (hero.id) {
-    //         return this.put(hero);
-    //     }
-    //     return this.post(hero);
-    // }
-    // delete(hero: Hero) {
-    //     let headers = new Headers();
-    //     headers.append('Content-Type', 'application/json');
-    //     let url = `${this.pushUrl}/${hero.id}`;
-    //     return this.http
-    //         .delete(url, {headers: headers})
-    //         .toPromise()
-    //         .catch(this.handleError);
-    // }
-    // // Add new Hero
-    // private post(hero: Hero): Promise<Hero> {
-    //     let headers = new Headers({
-    //         'Content-Type': 'application/json'});
-    //     return this.http
-    //         .post(this.pushUrl, JSON.stringify(hero), {headers: headers})
-    //         .toPromise()
-    //         .then(res => res.json().data)
-    //         .catch(this.handleError);
-    // }
-    // // Update existing Hero
-    // private put(hero: Hero) {
-    //     let headers = new Headers();
-    //     headers.append('Content-Type', 'application/json');
-    //     let url = `${this.pushUrl}/${hero.id}`;
-    //     return this.http
-    //         .put(url, JSON.stringify(hero), {headers: headers})
-    //         .toPromise()
-    //         .then(() => hero)
-    //         .catch(this.handleError);
-    // }
     PushService.prototype.handleError = function (error) {
         console.error('An error occurred', error);
-        return Promise.reject(error.message || error);
+        // return Promise.reject(error.message || error);
     };
     PushService = __decorate([
         core_1.Injectable(), 

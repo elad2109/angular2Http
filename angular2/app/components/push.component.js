@@ -9,6 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var pushRequest_1 = require('../dto/pushRequest');
 var push_service_1 = require('../services/push.service');
 var PushComponent = (function () {
     function PushComponent(pushService) {
@@ -21,14 +22,30 @@ var PushComponent = (function () {
         // .then(pushResult => this.pushResult = pushResult)
         // .catch(error => this.error = error);
     };
+    PushComponent.prototype.saveHeroes = function () {
+        var pushRequest = new pushRequest_1.PushRequest();
+        // this.pushService.doSelectMessagesAttributesUrl2(pushRequest);
+        this.pushService.doFeatureCreateNewMessageUrl(pushRequest);
+        this.pushService.doFeatureSelectPushMessages(this.element);
+        // .then(pushResult => this.pushResult = pushResult)
+        // .catch(error => this.error = error);
+    };
     PushComponent.prototype.ngOnInit = function () {
         console.info("in PushComponent ngOnInit()");
-        this.getHeroes();
+        //  this.getHeroes();
+        this.saveHeroes();
     };
     PushComponent = __decorate([
         core_1.Component({
             selector: 'push-comp',
-            template: '<button (click)="getHeroes()"> Send push2 </button>',
+            template: 
+            //   `<form (submit)="submitForm()">
+            //   <input [(ngModel)]="element.name"/>
+            //
+            //   <button type="submit">Submit the form</button>
+            // </form>
+            // <br>
+            '<button (click)="getHeroes()"> get </button> <button (click)="saveHeroes()"> push </button>',
             // templateUrl: 'app/html/heroes.component.html',
             providers: [push_service_1.PushService]
         }), 

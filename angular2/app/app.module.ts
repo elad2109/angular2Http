@@ -5,12 +5,11 @@ import {HttpModule}     from '@angular/http';
 import {AppComponent}  from './app.component';
 import {PushComponent}  from './components/push.component';
 
+import {FormsModule} from '@angular/forms';
+
 
 @NgModule({
-    imports: [
-        BrowserModule,
-        HttpModule
-    ],
+    imports: [BrowserModule, HttpModule, FormsModule],
     declarations: [AppComponent, PushComponent],
     bootstrap: [AppComponent]
 })

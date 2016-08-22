@@ -9,23 +9,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var platform_browser_1 = require('@angular/platform-browser');
-var http_1 = require('@angular/http');
-var app_component_1 = require('./app.component');
-var push_component_1 = require('./components/push.component');
-var forms_1 = require('@angular/forms');
-var AppModule = (function () {
-    function AppModule() {
+var StringUtilsService = (function () {
+    function StringUtilsService() {
     }
-    AppModule = __decorate([
-        core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule, http_1.HttpModule, forms_1.FormsModule],
-            declarations: [app_component_1.AppComponent, push_component_1.PushComponent],
-            bootstrap: [app_component_1.AppComponent]
-        }), 
+    StringUtilsService.prototype.mapToFormParamsString = function (dict) {
+        var a = [];
+        for (var key in dict) {
+            if (dict.hasOwnProperty(key)) {
+                a.push(key + "=" + dict[key]);
+            }
+        }
+        return a.join("&");
+    };
+    StringUtilsService = __decorate([
+        core_1.Injectable(), 
         __metadata('design:paramtypes', [])
-    ], AppModule);
-    return AppModule;
+    ], StringUtilsService);
+    return StringUtilsService;
 }());
-exports.AppModule = AppModule;
-//# sourceMappingURL=app.module.js.map
+exports.StringUtilsService = StringUtilsService;
+//# sourceMappingURL=stringUtils.service.js.map
